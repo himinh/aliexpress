@@ -1,11 +1,13 @@
 import { initializeApp } from "firebase/app";
 import {
-	FacebookAuthProvider,
 	GoogleAuthProvider,
 	getAuth,
 	signInWithPopup,
 	signOut,
 } from "firebase/auth";
+import { AccountType } from "~/enums/accountType";
+import { Gender } from "~/enums/gender";
+import type { SocialLogin } from "~/types";
 
 export const useFirebase = () => {
 	const config = useRuntimeConfig();
@@ -19,9 +21,11 @@ export const useFirebase = () => {
 	 * Facebook login
 	 */
 	const facebookLogin = async () => {
-		const provider = new FacebookAuthProvider();
-
-		const userCredential = await signInWithPopup(auth, provider);
+		// const provider = new FacebookAuthProvider();
+		// const userCredential = await signInWithPopup(
+		// 	auth,
+		// 	provider,
+		// );
 	};
 
 	/**
@@ -53,5 +57,10 @@ export const useFirebase = () => {
 		await signOut(auth);
 	};
 
-	return { app, facebookLogin, googleLogin, firebaseLogout };
+	return {
+		app,
+		facebookLogin,
+		googleLogin,
+		firebaseLogout,
+	};
 };

@@ -9,7 +9,10 @@ export const endpointApi = {
 		return authFetch.get(`${endpointUrl}`, query);
 	},
 
-	getById(id: string, query?: PaginationParams): Promise<Endpoint> {
+	getById(
+		id: string,
+		query?: PaginationParams,
+	): Promise<Endpoint> {
 		return authFetch.get(`${endpointUrl}/${id}`, query);
 	},
 
@@ -25,23 +28,32 @@ export const endpointApi = {
 		return authFetch.delete(`/${`${endpointUrl}`}/${id}`);
 	},
 
-	updatePassword(body: { oldPassword: string; newPassword: string }) {
+	updatePassword(body: {
+		oldPassword: string;
+		newPassword: string;
+	}) {
 		return authFetch.patch(`${endpointUrl}/`, body);
 	},
 
 	deleteManySoftByIds(ids: string[]) {
-		return authFetch.delete(`${endpointUrl}/${ids.toString()}/soft_ids`);
+		return authFetch.delete(
+			`${endpointUrl}/${ids.toString()}/soft_ids`,
+		);
 	},
 
 	deleteManyByIds(ids: string[]) {
-		return authFetch.delete(`${endpointUrl}/${ids.toString()}`);
+		return authFetch.delete(
+			`${endpointUrl}/${ids.toString()}`,
+		);
 	},
 
 	getMe() {
 		return authFetch.get(`${endpointUrl}/me`, {});
 	},
 
-	paginate(query?: PaginationParams): Promise<PaginateResponse<Endpoint>> {
+	paginate(
+		query?: PaginationParams,
+	): Promise<PaginateResponse<Endpoint>> {
 		return authFetch.get(`${endpointUrl}/paginate`, query);
 	},
 };

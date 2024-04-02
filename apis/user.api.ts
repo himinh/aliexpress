@@ -1,11 +1,17 @@
 import type { User } from "~/types/user.type";
 import { authFetch, httpClient } from "~/utils/fetch";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
-import type { FetchOptions, PaginationParams } from "../utils/fetch/types";
+import type {
+	FetchOptions,
+	PaginationParams,
+} from "../utils/fetch/types";
 
 const userUrl = "/users";
 export const userApi = {
-	getAll(query?: PaginationParams, options?: FetchOptions): Promise<User[]> {
+	getAll(
+		query?: PaginationParams,
+		options?: FetchOptions,
+	): Promise<User[]> {
 		return httpClient.get(`${userUrl}`, query, options);
 	},
 
@@ -14,27 +20,47 @@ export const userApi = {
 		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<User> {
-		return authFetch.get(`${userUrl}/${id}`, query, options);
+		return authFetch.get(
+			`${userUrl}/${id}`,
+			query,
+			options,
+		);
 	},
 
-	create(body: User, options?: FetchOptions): Promise<User> {
+	create(
+		body: User,
+		options?: FetchOptions,
+	): Promise<User> {
 		return authFetch.post(`${userUrl}`, body, options);
 	},
 
-	update(id: string, body: User, options?: FetchOptions): Promise<User> {
-		return authFetch.patch(`${userUrl}/${id}`, body, options);
+	update(
+		id: string,
+		body: User,
+		options?: FetchOptions,
+	): Promise<User> {
+		return authFetch.patch(
+			`${userUrl}/${id}`,
+			body,
+			options,
+		);
 	},
 
 	delete(id: string): Promise<User> {
 		return authFetch.delete(`/${`${userUrl}`}/${id}`);
 	},
 
-	updatePassword(body: { oldPassword: string; newPassword: string }) {
+	updatePassword(body: {
+		oldPassword: string;
+		newPassword: string;
+	}) {
 		return authFetch.patch(`${userUrl}/`, body);
 	},
 
 	deleteManySoftByIds(ids: string[]) {
-		return authFetch.delete(`${userUrl}/${ids.toString()}/soft_ids`);
+		return authFetch.delete(
+			`${userUrl}/${ids.toString()}/soft_ids`,
+		);
 	},
 
 	deleteManyByIds(ids: string[]) {
@@ -49,6 +75,10 @@ export const userApi = {
 		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<PaginateResponse<User>> {
-		return authFetch.get(`${userUrl}/paginate`, query, options);
+		return authFetch.get(
+			`${userUrl}/paginate`,
+			query,
+			options,
+		);
 	},
 };

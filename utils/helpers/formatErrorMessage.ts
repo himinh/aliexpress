@@ -1,6 +1,9 @@
 import { ErrorType } from "~/enums/errorType";
 
-export const formatErrorMessage = (details: string[], errorType: string) => {
+export const formatErrorMessage = (
+	details: string[],
+	errorType: string,
+) => {
 	const messages = details.map((message) => {
 		const words = message.split(" ");
 

@@ -10,13 +10,27 @@ export type SocialLogin = {
 	deviceID: string | null;
 } & Pick<
 	User,
-	"accountType" | "dateOfBirth" | "fullName" | "gender" | "avatar" | "email"
+	| "accountType"
+	| "dateOfBirth"
+	| "fullName"
+	| "gender"
+	| "avatar"
+	| "email"
 >;
 
 export type Register = Login &
-	Pick<User, "fullName" | "dateOfBirth" | "gender" | "username" | "phone">;
+	Pick<
+		User,
+		| "fullName"
+		| "dateOfBirth"
+		| "gender"
+		| "username"
+		| "phone"
+	>;
 
-export type ResetPassword = Pick<Login, "password"> & { token: string };
+export type ResetPassword = Pick<Login, "password"> & {
+	token: string;
+};
 
 export type Token = {
 	token: string;

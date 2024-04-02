@@ -2,7 +2,12 @@ export type SearchParams = {
 	[key: string]: string | number;
 };
 
-export type MethodType = "get" | "post" | "delete" | "patch" | "put";
+export type MethodType =
+	| "get"
+	| "post"
+	| "delete"
+	| "patch"
+	| "put";
 
 export type PaginationParams = {
 	_page?: number;
@@ -16,7 +21,12 @@ export type FetchOptions = {
 	headers?: { [key: string]: string };
 	mode?: "cors" | "no-cors" | "same-origin";
 	credentials?: "omit" | "same-origin" | "include";
-	cache?: "default" | "no-cache" | "reload" | "force-cache" | "only-if-cached";
+	cache?:
+		| "default"
+		| "no-cache"
+		| "reload"
+		| "force-cache"
+		| "only-if-cached";
 	redirect?: "follow" | "error" | "manual";
 	referrer?: string;
 	referrerPolicy?:

@@ -16,7 +16,9 @@ useHead({
 });
 </script>
 <template>
-	<div class="align-center flex min-h-screen justify-center">
+	<div
+		class="align-center flex min-h-screen justify-center"
+	>
 		<div class="rounded-lg bg-white p-5 shadow-lg">
 			<h4 class="pb-4 text-xl text-blue-500">
 				{{ $route.meta.title || "登录" }}

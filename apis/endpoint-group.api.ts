@@ -1,7 +1,10 @@
 import type { EndpointGroup } from "~/types/endpoint-group.type";
 import type { PaginateResponse } from "../types/paginate-reponse.type";
 import { httpClient } from "../utils/fetch";
-import type { FetchOptions, PaginationParams } from "../utils/fetch/types";
+import type {
+	FetchOptions,
+	PaginationParams,
+} from "../utils/fetch/types";
 
 const endpointGroupUrl = "/endpointGroups";
 export const endpointGroupService = {
@@ -9,7 +12,11 @@ export const endpointGroupService = {
 		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<EndpointGroup[]> {
-		return httpClient.get(`${endpointGroupUrl}`, query, options);
+		return httpClient.get(
+			`${endpointGroupUrl}`,
+			query,
+			options,
+		);
 	},
 
 	getById(
@@ -17,11 +24,22 @@ export const endpointGroupService = {
 		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<EndpointGroup> {
-		return httpClient.get(`${endpointGroupUrl}/${id}`, query, options);
+		return httpClient.get(
+			`${endpointGroupUrl}/${id}`,
+			query,
+			options,
+		);
 	},
 
-	create(body: EndpointGroup, options?: FetchOptions): Promise<EndpointGroup> {
-		return httpClient.post(`${endpointGroupUrl}`, body, options);
+	create(
+		body: EndpointGroup,
+		options?: FetchOptions,
+	): Promise<EndpointGroup> {
+		return httpClient.post(
+			`${endpointGroupUrl}`,
+			body,
+			options,
+		);
 	},
 
 	update(
@@ -29,23 +47,36 @@ export const endpointGroupService = {
 		body: EndpointGroup,
 		options?: FetchOptions,
 	): Promise<EndpointGroup> {
-		return httpClient.patch(`${endpointGroupUrl}/${id}`, body, options);
+		return httpClient.patch(
+			`${endpointGroupUrl}/${id}`,
+			body,
+			options,
+		);
 	},
 
 	delete(id: string): Promise<EndpointGroup> {
-		return httpClient.delete(`/${`${endpointGroupUrl}`}/${id}`);
+		return httpClient.delete(
+			`/${`${endpointGroupUrl}`}/${id}`,
+		);
 	},
 
-	updatePassword(body: { oldPassword: string; newPassword: string }) {
+	updatePassword(body: {
+		oldPassword: string;
+		newPassword: string;
+	}) {
 		return httpClient.patch(`${endpointGroupUrl}/`, body);
 	},
 
 	deleteManySoftByIds(ids: string[]) {
-		return httpClient.delete(`${endpointGroupUrl}/${ids.toString()}/soft_ids`);
+		return httpClient.delete(
+			`${endpointGroupUrl}/${ids.toString()}/soft_ids`,
+		);
 	},
 
 	deleteManyByIds(ids: string[]) {
-		return httpClient.delete(`${endpointGroupUrl}/${ids.toString()}`);
+		return httpClient.delete(
+			`${endpointGroupUrl}/${ids.toString()}`,
+		);
 	},
 
 	getMe() {
@@ -56,6 +87,10 @@ export const endpointGroupService = {
 		query?: PaginationParams,
 		options?: FetchOptions,
 	): Promise<PaginateResponse<EndpointGroup>> {
-		return httpClient.get(`${endpointGroupUrl}/paginate`, query, options);
+		return httpClient.get(
+			`${endpointGroupUrl}/paginate`,
+			query,
+			options,
+		);
 	},
 };

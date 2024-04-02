@@ -9,7 +9,10 @@ export const menuApi = {
 		return authFetch.get(`${menuUrl}`, query);
 	},
 
-	getById(id: string, query?: PaginationParams): Promise<Menu> {
+	getById(
+		id: string,
+		query?: PaginationParams,
+	): Promise<Menu> {
 		return authFetch.get(`${menuUrl}/${id}`, query);
 	},
 
@@ -25,19 +28,26 @@ export const menuApi = {
 		return authFetch.delete(`/${`${menuUrl}`}/${id}`);
 	},
 
-	updatePassword(body: { oldPassword: string; newPassword: string }) {
+	updatePassword(body: {
+		oldPassword: string;
+		newPassword: string;
+	}) {
 		return authFetch.patch(`${menuUrl}/`, body);
 	},
 
 	deleteManySoftByIds(ids: string[]) {
-		return authFetch.delete(`${menuUrl}/${ids.toString()}/soft_ids`);
+		return authFetch.delete(
+			`${menuUrl}/${ids.toString()}/soft_ids`,
+		);
 	},
 
 	deleteManyByIds(ids: string[]) {
 		return authFetch.delete(`${menuUrl}/${ids.toString()}`);
 	},
 
-	paginate(query?: PaginationParams): Promise<PaginateResponse<Menu>> {
+	paginate(
+		query?: PaginationParams,
+	): Promise<PaginateResponse<Menu>> {
 		return authFetch.get(`${menuUrl}/paginate`, query);
 	},
 };

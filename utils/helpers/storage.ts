@@ -5,15 +5,20 @@ export const storageKeys = {
 	carts: "carts",
 };
 
-export const localStorageManager = {
+export const storage = {
 	getAuth(): AuthUser | null {
-		const authString = localStorage.getItem(storageKeys.token);
+		const authString = localStorage.getItem(
+			storageKeys.token,
+		);
 
 		return authString ? JSON.parse(authString) : null;
 	},
 
 	setAuth(auth: AuthUser) {
-		localStorage.setItem(storageKeys.token, JSON.stringify(auth));
+		localStorage.setItem(
+			storageKeys.token,
+			JSON.stringify(auth),
+		);
 	},
 
 	clearAuth() {
@@ -27,7 +32,10 @@ export const localStorageManager = {
 	},
 
 	setCarts(carts: any[]) {
-		localStorage.setItem(storageKeys.carts, JSON.stringify(carts));
+		localStorage.setItem(
+			storageKeys.carts,
+			JSON.stringify(carts),
+		);
 	},
 
 	clearCarts() {
